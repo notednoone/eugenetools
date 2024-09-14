@@ -7,7 +7,7 @@
     <meta name="description" content="Experimental tools to make Eugene an easier place to browse">
     <meta name="author" content="eugenetools">
     <meta name="theme-color" content="#ffffff">
-    <title>eugene.tools v1.1.animated - experimental tools</title>
+    <title>eugene.tools v1.3 - experimental tools</title>
     <link rel="icon" href="favicon.ico" type="image/x-icon">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
     <style>
@@ -50,7 +50,7 @@
             margin-bottom: 10px;
             border: 3px solid #fff;
             box-shadow: 0 0 10px rgba(0,0,0,0.1);
-            animation: rotateLogo 10s ease-in-out infinite;
+            animation: moveLogo 10s cubic-bezier(0.445, 0.05, 0.55, 0.95) infinite;
         }
         h1 {
             margin: 0 0 5px 0;
@@ -100,21 +100,21 @@
                 transform: translateY(0px) translateX(0px) rotate(0deg);
             }
         }
-        @keyframes rotateLogo {
+        @keyframes moveLogo {
             0% {
-                transform: rotate(0deg);
+                transform: rotate(0deg) translate(0px, 0px);
             }
             25% {
-                transform: rotate(-2deg);
+                transform: rotate(-4deg) translate(-10px, 10px);
             }
             50% {
-                transform: rotate(1deg);
+                transform: rotate(2deg) translate(10px, 10px);
             }
             75% {
-                transform: rotate(-3deg);
+                transform: rotate(-6deg) translate(-10px, 10px);
             }
             100% {
-                transform: rotate(0deg);
+                transform: rotate(0deg) translate(0px, 0px);
             }
         }
         @keyframes floatText {
