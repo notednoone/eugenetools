@@ -7,7 +7,7 @@
     <meta name="description" content="Experimental tools to make Eugene an easier place to browse">
     <meta name="author" content="eugenetools">
     <meta name="theme-color" content="#ffffff">
-    <title>eugene.tools v1.5</title>
+    <title>eugene.tools v1.6</title>
     <link rel="icon" href="favicon.ico" type="image/x-icon">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
     <style>
@@ -53,9 +53,10 @@
             border: 3px solid #fff;
             box-shadow: 0 0 10px rgba(0,0,0,0.1);
             animation: moveLogo 10s cubic-bezier(0.445, 0.05, 0.55, 0.95) infinite;
+            background-color: white;
         }
         h1 {
-            margin: 0 0 5px 0;
+            margin: 0;
             font-weight: 600;
             font-size: 32px;
             letter-spacing: -0.5px;
@@ -64,21 +65,13 @@
                 floatText 8s ease-in-out infinite;
             display: inline-block;
         }
-        .signature {
-            font-size: 14px;
-            color: #9A8C7A;
-            text-decoration: none;
-            transition: color 0.3s ease;
-            animation: floatSignature 12s ease-in-out infinite;
-            display: inline-block;
-        }
-        .signature:hover {
-            color: #7A6C5A;
-        }
         .falling-item {
             position: absolute;
             opacity: 0;
             transition: opacity 0.5s ease-in;
+            background-color: white;
+            border-radius: 50%;
+            padding: 5px;
         }
         .falling-item-shadow {
             position: absolute;
@@ -86,15 +79,20 @@
             transition: opacity 0.5s ease-in;
             filter: blur(3px);
         }
+        .popup {
+            position: absolute;
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 12px;
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.3s ease-in-out;
+            white-space: nowrap;
+        }
         @keyframes colorChange {
-            0% { color: #A67C52; }
-            14% { color: #8FBC8F; }
-            28% { color: #C4A484; }
-            42% { color: #90EE90; }
-            56% { color: #D2B48C; }
-            70% { color: #9ACD32; }
-            84% { color: #DEB887; }
-            100% { color: #E6BEAE; }
+            0% { color: #2b3998; }
+            100% { color: #5463bb; }
         }
         @keyframes float {
             0%, 100% { transform: translateY(0px) translateX(0px) rotate(0deg); }
@@ -114,26 +112,41 @@
             50% { transform: translateY(2.5px) translateX(-2.5px) rotate(-0.5deg); }
             75% { transform: translateY(5px) translateX(5px) rotate(1.5deg); }
         }
-        @keyframes floatSignature {
-            0%, 100% { transform: translateY(0px) translateX(0px) rotate(0deg); }
-            25% { transform: translateY(-2.5px) translateX(1.25px) rotate(0.5deg); }
-            50% { transform: translateY(1.25px) translateX(-1.25px) rotate(-0.25deg); }
-            75% { transform: translateY(2.5px) translateX(2.5px) rotate(0.75deg); }
-        }
     </style>
 </head>
 <body>
     <div class="content">
         <img class="logo" src="logo.png" alt="eugene.tools Logo">
         <h1>eugene.tools</h1>
-        <a href="#" class="signature">noted no one</a>
     </div>
     <div id="falling-items-container"></div>
 
     <script>
         const fallingItemsContainer = document.getElementById('falling-items-container');
-        const numImages = 6;
         let animationStarted = false;
+
+        const quotes = [
+            {
+                "src": "/falling/emoji-deerbot.png",
+                "alt": "Shh, I'm not here"
+            },
+            {
+                "src": "/falling/emoji-duckbot.png",
+                "alt": "Quack Attack!"
+            },
+            {
+                "src": "/falling/emoji-footballbot.png",
+                "alt": "Go Oregon Teams!"
+            },
+            {
+                "src": "/falling/emoji-rainbot.png",
+                "alt": "All the rain"
+            },
+            {
+                "src": "/falling/emoji-smokebot.png",
+                "alt": "Just chillin..."
+            }
+        ];
 
         function randomBetween(min, max) {
             return Math.random() * (max - min) + min;
@@ -142,10 +155,16 @@
         function createFallingItem() {
             const item = document.createElement('img');
             item.className = 'falling-item';
-            item.src = `/falling${Math.floor(Math.random() * numImages) + 1}.png`;
+            const quoteIndex = Math.floor(Math.random() * quotes.length);
+            item.src = quotes[quoteIndex].src;
+            item.alt = quotes[quoteIndex].alt;
             
             const shadow = document.createElement('div');
             shadow.className = 'falling-item-shadow';
+
+            const popup = document.createElement('div');
+            popup.className = 'popup';
+            popup.textContent = `"${item.alt}"`;
 
             const startX = Math.random() * window.innerWidth;
             item.style.left = `${startX}px`;
@@ -161,6 +180,7 @@
 
             fallingItemsContainer.appendChild(item);
             fallingItemsContainer.appendChild(shadow);
+            fallingItemsContainer.appendChild(popup);
 
             const fallSpeed = randomBetween(30, 200);
             const rotationSpeed = randomBetween(15, 45) * (Math.random() < 0.5 ? -1 : 1);
@@ -204,22 +224,47 @@
             setTimeout(() => {
                 item.style.opacity = '0.7';
                 shadow.style.opacity = '0.7';
-                item.animate(keyframes, {
+                const itemAnimation = item.animate(keyframes, {
                     duration: duration * 1000,
                     easing: 'linear',
                     fill: 'forwards'
                 });
-                shadow.animate(shadowKeyframes, {
+                const shadowAnimation = shadow.animate(shadowKeyframes, {
                     duration: duration * 1000,
                     easing: 'linear',
                     fill: 'forwards'
+                });
+
+                item.addEventListener('mouseover', () => {
+                    itemAnimation.pause();
+                    shadowAnimation.pause();
+                    popup.style.opacity = '1';
+                    updatePopupPosition(item, popup);
+                });
+
+                item.addEventListener('mouseout', () => {
+                    itemAnimation.play();
+                    shadowAnimation.play();
+                    popup.style.opacity = '0';
+                });
+
+                item.addEventListener('mousemove', (e) => {
+                    updatePopupPosition(item, popup);
                 });
             }, 50);
 
             setTimeout(() => {
                 item.remove();
                 shadow.remove();
+                popup.remove();
             }, duration * 1000 + 100);
+        }
+
+        function updatePopupPosition(item, popup) {
+            const rect = item.getBoundingClientRect();
+            popup.style.left = `${rect.left + rect.width / 2}px`;
+            popup.style.top = `${rect.top - 30}px`;
+            popup.style.transform = 'translate(-50%, -100%)';
         }
 
         function startFallingAnimation() {
