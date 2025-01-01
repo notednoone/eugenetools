@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Countdown Timer</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background-color: #f0f2f5;
+            gap: 1.5rem;
+        }
+
+        h2 {
+            color: #333;
+            font-size: 1.25rem;
+            margin: 0 0 1.5rem 0;
+            text-align: center;
+            padding: 0 1rem;
+            line-height: 1.6;
+        }
+
+        .countdown {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            padding: 0 1rem;
+        }
+
+        .countdown-row {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            width: 100%;
+        }
+
+        .time-segment {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: white;
+            padding: 1rem 1.5rem;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            flex: 1;
+            min-width: 0;
+            max-width: 150px;
+        }
+
+                .time-value {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .countdown > .countdown-row:first-of-type .time-value {
+            font-size: 3.75rem;
+        }
+
+        .countdown > .countdown-row:first-of-type .time-segment {
+            max-width: 180px;
+            padding: 1.25rem 1.75rem;
+        }
+
+        .time-label {
+            font-size: 0.9rem;
+            color: #666;
+            text-transform: uppercase;
+            margin-top: 0.5rem;
+        }
+
+        @media (max-width: 768px) {
+            h2 {
+                font-size: 1.1rem;
+                margin-bottom: 1rem;
+            }
+
+            .countdown {
+                gap: 1rem;
+            }
+
+            .countdown-row {
+                gap: 1rem;
+            }
+
+            .time-segment {
+                padding: 0.75rem 1rem;
+            }
+
+            .time-value {
+                font-size: 2rem;
+            }
+            
+            .countdown-row:first-of-type .time-value {
+                font-size: 3rem;
+            }
+            
+            .countdown-row:first-of-type .time-segment {
+                padding: 1rem 1.25rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .countdown-row {
+                gap: 0.75rem;
+            }
+
+            .time-segment {
+                padding: 0.5rem;
+            }
+
+            .time-value {
+                font-size: 1.75rem;
+            }
+            
+            .countdown-row:first-of-type .time-value {
+                font-size: 2.625rem;
+            }
+            
+            .countdown-row:first-of-type .time-segment {
+                padding: 0.75rem 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h2>Remaining time for Mike to live in Oregon such that<br>half of his life will have been lived in each state...</h2>
+    <div class="countdown">
+        <div class="countdown-row">
+            <div class="time-segment">
+                <span class="time-value" id="years">2</span>
+                <span class="time-label">Years</span>
+            </div>
+            <div class="time-segment">
+                <span class="time-value" id="months">9</span>
+                <span class="time-label">Months</span>
+            </div>
+            <div class="time-segment">
+                <span class="time-value" id="days">0</span>
+                <span class="time-label">Days</span>
+            </div>
+        </div>
+        <div class="countdown-row">
+            <div class="time-segment">
+                <span class="time-value" id="hours">12</span>
+                <span class="time-label">Hours</span>
+            </div>
+            <div class="time-segment">
+                <span class="time-value" id="minutes">34</span>
+                <span class="time-label">Minutes</span>
+            </div>
+            <div class="time-segment">
+                <span class="time-value" id="seconds">56</span>
+                <span class="time-label">Seconds</span>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function updateCountdown() {
+            const targetDate = new Date('October 1, 2027 00:00:00').getTime();
+            const now = new Date().getTime();
+            const difference = targetDate - now;
+
+            const years = Math.floor(difference / (1000 * 60 * 60 * 24 * 365.25));
+            const months = Math.floor((difference % (1000 * 60 * 60 * 24 * 365.25)) / (1000 * 60 * 60 * 24 * 30.44));
+            const days = Math.floor((difference % (1000 * 60 * 60 * 24 * 30.44)) / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+
+            document.getElementById('years').textContent = years;
+            document.getElementById('months').textContent = months;
+            document.getElementById('days').textContent = days;
+            document.getElementById('hours').textContent = hours;
+            document.getElementById('minutes').textContent = minutes;
+            document.getElementById('seconds').textContent = seconds;
+        }
+
+        // Update immediately and then every second
+        updateCountdown();
+        setInterval(updateCountdown, 1000);
+    </script>
+</body>
+</html>
