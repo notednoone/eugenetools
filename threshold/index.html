@@ -3,9 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Threshold Session Notes!</title>
-    <link href="https://fonts.googleapis.com/css2?family=Almendra:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet" integrity="sha384-..." crossorigin="anonymous">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self'; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com;">
+    <title>Threshold Session Notes</title>
+    <link href="https://fonts.googleapis.com/css2?family=Almendra:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
     <style>
         body {
             font-family: 'Palatino Linotype', 'Book Antiqua', Palatino, serif;
@@ -131,16 +130,17 @@
         
         <p>Continuing north the following day, they discovered the hunters' camp and found that both men had been killed, seemingly by Mud Men. Gathering the hunters' belongings, they returned to inform Oram of the unfortunate news.</p>
 
-        <h2>Players</h2>
+        <h2>Attendees</h2>
 
         <ul>
             <li><strong>"Toby"</strong> - Human Fighter (Joshua)</li>
             <li><strong>"Oz" Osdrouc</strong> - Dwarven Warpriest (Elijah)</li>
             <li><strong>"Danner"</strong> - Halfling Barbarian (Kasey)</li>
             <li><strong>"Xin"</strong> - Human Wizard (Johannes)</li>
+            <li><strong>GM</strong> - Mike</li>
         </ul>
         
-        <h2>Additional Images</h2>
+        <h2>Session Images</h2>
         <div class="additional-images">
             <div class="image-container">
                 <img src="img/mud-men.webp" alt="Mud Men" onclick="openModal(this.src, this.alt)">
@@ -162,6 +162,26 @@
         <img class="modal-content" id="modalImage">
     </div>
 
-    <script src="modal.js"></script>
+    <script>
+        function openModal(src, alt) {
+            var modal = document.getElementById("imageModal");
+            var modalImg = document.getElementById("modalImage");
+            modal.style.display = "flex";
+            modalImg.src = src;
+            modalImg.alt = alt;
+        }
+
+        function closeModal() {
+            var modal = document.getElementById("imageModal");
+            modal.style.display = "none";
+        }
+
+        window.onclick = function(event) {
+            var modal = document.getElementById("imageModal");
+            if (event.target == modal) {
+                closeModal();
+            }
+        }
+    </script>
 </body>
 </html>
