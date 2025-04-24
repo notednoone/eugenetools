@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Threshold Session Notes!!!</title>
+    <title>Threshold Session Notes</title>
     <link href="https://fonts.googleapis.com/css2?family=Almendra:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
     <style>
         body {
@@ -109,7 +109,7 @@
     </style>
 </head>
 <body>
-    <h1>Threshold Session Notes!</h1>
+    <h1>Threshold Session Notes!!</h1>
     
     <div class="session-container">
 
@@ -162,25 +162,30 @@
     </div>
 
     <script>
-        function openModal(src, alt) {
-            var modal = document.getElementById("imageModal");
-            var modalImg = document.getElementById("modalImage");
-            modal.style.display = "flex";
-            modalImg.src = src;
-            modalImg.alt = alt;
-        }
+        document.addEventListener("DOMContentLoaded", function() {
+            const modal = document.getElementById("imageModal");
+            const modalImg = document.getElementById("modalImage");
 
-        function closeModal() {
-            var modal = document.getElementById("imageModal");
-            modal.style.display = "none";
-        }
+            window.openModal = function(src, alt) {
+                if (typeof src === "string" && typeof alt === "string") {
+                    modal.style.display = "flex";
+                    modalImg.src = src;
+                    modalImg.alt = alt;
+                }
+            };
 
-        window.onclick = function(event) {
-            var modal = document.getElementById("imageModal");
-            if (event.target == modal) {
-                closeModal();
-            }
-        }
+            window.closeModal = function() {
+                modal.style.display = "none";
+                modalImg.src = "";
+                modalImg.alt = "";
+            };
+
+            window.addEventListener("click", function(event) {
+                if (event.target === modal) {
+                    closeModal();
+                }
+            });
+        });
     </script>
 </body>
 </html>
