@@ -1,0 +1,230 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title>Eugene Men's Social Club</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="description" content="Eugene Men's Social Club — show up, no agenda. A welcoming, no-pressure meetup for building real friendships in Eugene, Oregon." />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet" />
+        <link rel="stylesheet" href="css/styles.css" />
+        <link rel="icon" href="favicon.ico" sizes="any" />
+        <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png" />
+        <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png" />
+        <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png" />
+    </head>
+    <body>
+        <a class="skip-link" href="#main">Skip to main content</a>
+
+        <header class="site-header reveal reveal--top">
+            <div class="wrap site-header__inner">
+                <a href="index.html" class="site-header__logo-link" aria-label="Eugene Men's Social Club home">
+                    <img src="images/logo.svg" alt="Eugene Men's Social Club logo" class="site-header__logo" />
+                </a>
+                <button type="button" class="nav-toggle" aria-expanded="false" aria-controls="site-nav" aria-label="Toggle menu">
+                    <span class="nav-toggle__bar"></span>
+                    <span class="nav-toggle__bar"></span>
+                    <span class="nav-toggle__bar"></span>
+                </button>
+                <nav class="site-nav" id="site-nav">
+                    <div class="site-nav__inner">
+                        <a href="#meetup">Next meetup</a>
+                        <a href="#expect">What to expect</a>
+                        <a href="#events">Past events</a>
+                        <a href="https://discord.gg/HVur5D7ggH" class="btn btn--accent">Join the Discord</a>
+                    </div>
+                </nav>
+            </div>
+        </header>
+
+        <main id="main" tabindex="-1">
+            <section class="hero">
+                <canvas id="hero-canvas" class="hero__canvas" aria-hidden="true"></canvas>
+                <div class="wrap hero__inner">
+                    <div class="hero__copy">
+                        <div class="hero__title-row reveal reveal--left">
+                            <img src="images/hero-logo.svg" alt="Eugene Men's Social Club" class="hero__logo" />
+                            <h1 class="hero__heading">Show up.<br />No agenda.</h1>
+                        </div>
+                        <p class="hero__lede reveal" data-reveal-delay="90">Providing a welcoming space where members can build genuine relationships, share experiences, and foster a true sense of belonging within their community.</p>
+                        <div class="hero__cta-row reveal reveal--scale" data-reveal-delay="180">
+                            <a href="https://discord.gg/HVur5D7ggH" class="btn btn--accent btn--large">Join the Discord</a>
+                            <span class="hero__cta-note">Free. No signup form. Just show up!</span>
+                        </div>
+                    </div>
+                    <div class="hero__photo-wrap reveal reveal--right" data-reveal-delay="270">
+                        <div class="hero__photo">
+                            <img src="images/hero-photo.webp" alt="The group at a Sunday meetup" />
+                        </div>
+                        <div class="hero__photo-tag">Lunch at Drop Bear!</div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="meetup" class="meetup wrap">
+                <div class="meetup__card reveal" data-reveal-delay="360">
+                    <div class="meetup__date">
+                        <div class="meetup__date-month">Sep</div>
+                        <div class="meetup__date-day">06</div>
+                        <div class="meetup__date-weekday">Sunday</div>
+                    </div>
+                    <div class="meetup__details">
+                        <div class="meetup__eyebrow">Next meetup</div>
+                        <h2 class="meetup__title">Beers with Buds</h2>
+                        <p class="meetup__desc">1:00pm to 3:00pm &middot; Oakshire Brewery @ 207 Madison St, Eugene &middot; Section near the doors.</p>
+                    </div>
+                    <button type="button" class="btn btn--dark meetup__link" data-modal-open="meetup-modal" aria-haspopup="dialog">Get the details</button>
+                </div>
+            </section>
+
+            <dialog id="meetup-modal" class="meetup-modal" aria-labelledby="meetup-modal-title">
+                <div class="meetup-modal__inner">
+                    <button type="button" class="meetup-modal__close" data-modal-close aria-label="Close">
+                        <svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M4 4l16 16M20 4L4 20"></path></svg>
+                    </button>
+                    <div class="meetup-modal__grid">
+                        <div class="meetup-modal__info">
+                            <p class="meetup-modal__eyebrow">Next meetup</p>
+                            <h2 class="meetup-modal__title" id="meetup-modal-title">Beers with Buds</h2>
+                            <dl class="meetup-modal__facts">
+                                <div class="meetup-modal__fact">
+                                    <dt>Date</dt>
+                                    <dd>Sunday, September 6</dd>
+                                </div>
+                                <div class="meetup-modal__fact">
+                                    <dt>Time</dt>
+                                    <dd>1:00pm&ndash;3:00pm (or later)</dd>
+                                </div>
+                                <div class="meetup-modal__fact">
+                                    <dt>Location</dt>
+                                    <dd>Oakshire Brewing<br />207 Madison St, Eugene</dd>
+                                </div>
+                                <div class="meetup-modal__fact">
+                                    <dt>Find us</dt>
+                                    <dd>Section near the doors</dd>
+                                </div>
+                            </dl>
+                            <a href="https://discord.gg/HVur5D7ggH" class="btn btn--accent meetup-modal__discord">Join the Discord</a>
+                        </div>
+                        <div class="meetup-modal__map">
+                            <iframe src="https://www.google.com/maps?q=Oakshire+Brewing,+207+Madison+St,+Eugene,+OR+97402&output=embed" title="Map to Oakshire Brewing, 207 Madison St, Eugene, OR" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        </div>
+                    </div>
+                </div>
+            </dialog>
+
+            <section class="about wrap">
+                <h2 class="about__heading reveal">Who we are</h2>
+                <div class="about__body reveal">
+                    <p>Like many of you, our members hit a point where we wanted to get out, be around others, and make some real friends. This club turned out to be a pretty good answer to that.</p>
+                    <p>We are a mixed bag, and that is kind of the point. Different backgrounds, different ages, different ways of spending a weekend. Mostly guys, though not exclusively, and nobody here fits a single mold. What we share is simpler than any of that: we each wanted real connection and we were willing to show up for it.</p>
+                </div>
+            </section>
+
+            <section id="expect" class="expect">
+                <div class="wrap">
+                    <h2 class="expect__heading reveal">What to expect</h2>
+                    <div class="expect__grid">
+                        <div class="expect__item reveal">
+                            <svg width="34" height="34" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="#FCB031" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="12" cy="8" r="4"></circle>
+                                <path d="M4.5 21c1.2-4 4.1-6 7.5-6s6.3 2 7.5 6"></path>
+                            </svg>
+                            <h3>Show up</h3>
+                            <p>Take a seat, feel free to introduce yourself, or just hang out!</p>
+                        </div>
+                        <div class="expect__item reveal">
+                            <svg width="34" height="34" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="#FCB031" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="3" y="5" width="18" height="16" rx="2"></rect>
+                                <path d="M8 3v4M16 3v4M3 10h18"></path>
+                            </svg>
+                            <h3>No pressure</h3>
+                            <p>Join us anytime you feel like it, skip whenever you don't.</p>
+                        </div>
+                        <div class="expect__item reveal">
+                            <svg width="34" height="34" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="#FCB031" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h16M4 12h10M4 18h6"></path></svg>
+                            <h3>No agenda</h3>
+                            <p>No icebreakers, no check-in circle. Just conversations.</p>
+                        </div>
+                        <div class="expect__item reveal">
+                            <svg width="34" height="34" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="#FCB031" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l2.4 5.3 5.6.6-4.2 3.9 1.2 5.7L12 15.7 6.99 18.5l1.2-5.7L4 8.9l5.6-.6z"></path></svg>
+                            <h3>Varying events</h3>
+                            <p>Hikes, table top games, disc golf, trivia nights, lunches, and more!</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="events" class="events wrap">
+                <div class="events__header reveal">
+                    <h2>Stuff we've done lately</h2>
+                    <p>Two standing meetups a month, plus whatever else sounds fun.</p>
+                </div>
+                <div class="events__grid">
+                    <figure class="events__item reveal">
+                        <div class="events__photo events__photo--placeholder"><span>Dexter Lake Picnic</span></div>
+                        <figcaption>A day at the lake with friends and family... and food!</figcaption>
+                    </figure>
+                    <figure class="events__item reveal">
+                        <div class="events__photo events__photo--placeholder"><span>Trivia Night at Ninkasi</span></div>
+                        <figcaption>Lord of the Rings Trivia was competitive!</figcaption>
+                    </figure>
+                    <figure class="events__item reveal">
+                        <div class="events__photo events__photo--placeholder"><span>Weekday lunch at PLAY</span></div>
+                        <figcaption>BBQ from Paper Plate and good company!</figcaption>
+                    </figure>
+                    <figure class="events__item reveal">
+                        <div class="events__photo events__photo--placeholder"><span>Eugene Bright Parade (Crossover Event)</span></div>
+                        <figcaption>A great night out for a crossover event with the Eugene Women's Social Club!</figcaption>
+                    </figure>
+                    <figure class="events__item reveal">
+                        <div class="events__photo events__photo--placeholder"><span>Annual Pizza in the Park (Crossover Event)</span></div>
+                        <figcaption>More pizza than we needed as usual!</figcaption>
+                    </figure>
+                    <figure class="events__item reveal">
+                        <div class="events__photo events__photo--placeholder"><span>Bring Your Own Furniture Party</span></div>
+                        <figcaption>We broke in a member's new house by bringing furniture for a one night party!</figcaption>
+                    </figure>
+                </div>
+            </section>
+        </main>
+
+        <footer class="site-footer">
+            <div class="wrap site-footer__inner">
+                <div class="site-footer__about reveal">
+                    <a href="index.html" class="site-footer__logo-link" aria-label="Eugene Men's Social Club home">
+                        <img src="images/logo.svg" alt="Eugene Men's Social Club logo" class="site-footer__logo" />
+                    </a>
+                    <p>Eugene Men's Social Club. We meet at Oakshire Brewing, 207 Madison St, every first and third Sunday.</p>
+                </div>
+                <div class="site-footer__links reveal">
+                    <span class="site-footer__label">Around here</span>
+                    <a href="#meetup">Next meetup</a>
+                    <a href="#expect">What to expect</a>
+                    <a href="#events">Past events</a>
+                </div>
+                <div class="site-footer__connect reveal">
+                    <h3 class="site-footer__card-heading">Connect</h3>
+                    <p class="site-footer__card-text">Free. No signup form. Just show up!</p>
+                    <div class="site-footer__connect-actions">
+                        <a href="https://discord.gg/HVur5D7ggH" class="btn btn--accent">Join the Discord</a>
+                        <a href="https://www.facebook.com/eugenemenssocialclub/" class="btn btn--dark site-footer__social-btn" target="_blank" rel="noopener noreferrer" aria-label="Eugene Men's Social Club on Facebook">
+                            <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" fill="currentColor">
+                                <path
+                                    d="M22 12.06C22 6.505 17.523 2 12 2S2 6.505 2 12.06c0 5.02 3.657 9.184 8.438 9.94v-7.03H7.898v-2.91h2.54V9.845c0-2.522 1.492-3.915 3.777-3.915 1.094 0 2.238.197 2.238.197v2.475h-1.26c-1.243 0-1.63.775-1.63 1.57v1.888h2.773l-.443 2.91h-2.33V22c4.78-.756 8.437-4.92 8.437-9.94Z" />
+                            </svg>
+                            Facebook
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="wrap site-footer__bottom reveal">
+                <p class="site-footer__copyright">&copy; 2026 Eugene Men's Social Club</p>
+                <p class="site-footer__credit">Thanks to Oakshire for holding a spot for us!</p>
+            </div>
+        </footer>
+
+        <script src="js/main.js"></script>
+    </body>
+</html>
